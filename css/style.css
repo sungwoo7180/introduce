@@ -12,7 +12,8 @@ ol, ul {
 /*링크에서도 언더바를 없애준다.*/
 a {
     outline: 0;
-    text-decoration: none;
+    text-decoration: none;   /* 하이퍼 링크의 밑줄 제거 */
+    color: inherit;             /* 상속된 색상 사용 */
 }
 img {
     border : 0;
@@ -31,22 +32,60 @@ body {
     position : fixed;
     width : 100%;
     height : 100%;
+    max-width: 1920px;
     /* 마지막으로 3d 회전의 투시 시점을 부여한다 */
     perspective: 1500px;
     /*    위치가 겹쳐져있다. 의도되지 않았다. 가로 넓이가 600px 임으로
     가로넓이에 해당되는 만큼 시원하게 띄엄띄엄 넣어준다.*/
 }
 .wrap>video {
-    /*화면 전체를 감쌀려면 ? 강의 다시*/
-    /*width : 100vw;*/
-    /*Wrap을 곽 채울려면*/
+    /* 화면 전체를 감쌀려면 ? 강의 다시*/
+    /* width : 100vw;*/
+    /* Wrap 을 곽 채울려면*/
     width : 100%;
     height : 100%;
     object-fit : cover;
     position : fixed;
     opacity : 0.5;
 }
+/* 태블릿 미디어 쿼리 */
+@media (max-width: 1024px) {
+    .wrap {
+        width: 100%;
+    }
+    /* 태블릿에 최적화된 레이아웃 */
+    #circle {
+        width: 50%;
+        height: auto;
+        transform: scale(0.8);
+    }
+    .article {
+        padding: 20px;
+    }
+}
 
+/* 모바일 미디어 쿼리 */
+@media (max-width: 480px) {
+    .wrap {
+        width: 100%;
+    }
+    #circle {
+        width: 100%;
+        height: auto;
+        transform: scale(1); /* 스케일을 기본값으로 설정 */
+        margin-top: 20px; /* 상단 여백 추가 */
+    }
+    .article {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 18px; /* 모바일에 적합한 글꼴 크기 */
+    }
+    nav div h2 {
+        font-size: 16px; /* 더 작은 글꼴 크기로 조정 */
+    }
+
+}
 @keyframes panorama-spin {
     /* 변형 효과를 통해 스핀 (rotate) 을 적용 */
     0% { transform : rotateY(0deg); }
@@ -65,7 +104,8 @@ body {
     /*  3D 변형에 대해서 속성이 적용이 가능해짐*/
     transform-style: preserve-3d; /* 3D 변형 transform 속성 적용 가능해짐 */
     /*animation : panorama-spin linear 10s infinite;*/
-    animation: panorama-spin linear 10s infinite;
+    /* 애니메이션 속도 */
+    animation: panorama-spin linear 20s infinite;
 }
 
 .wrap #circle article {     /* article 이 .face $임 */
@@ -219,6 +259,44 @@ body {
 
 /* =====.face6 요소 개별 제어 시작 ====*/
 /* =====.face7 요소 개별 제어 시작 ====*/
+#circle .face7 .inner>div:nth-of-type(1) {
+    width: 100%;
+    height : 400px;
+    margin-bottom: 20px;
+}
+#circle .face7 .inner>div:nth-of-type(1) label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+#circle .face7 #toggleButton {
+    appearance: none;
+    position: relative;
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 1.25em;
+    width: 2.25em;
+    height: 1.25em;
+}
+#circle .face7 #toggleButton::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    transform: scale(0.8);
+    background-color: gray;
+    transition: left 250ms linear;
+}
+#circle .face7 #toggleButton:checked{
+    background-color: tomato;
+    border-color: tomato;
+}
+#circle .face7 #toggleButton:checked::before{
+    background-color: white;
+    left: 1em;
+}
 /* =====.face8 요소 개별 제어 시작 ====*/
 #circle .face8 .inner>div:nth-of-type(1) {
     width: 100%;
