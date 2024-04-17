@@ -48,44 +48,7 @@ body {
     position : fixed;
     opacity : 0.5;
 }
-/* 태블릿 미디어 쿼리 */
-@media (max-width: 1024px) {
-    .wrap {
-        width: 100%;
-    }
-    /* 태블릿에 최적화된 레이아웃 */
-    #circle {
-        width: 50%;
-        height: auto;
-        transform: scale(0.8);
-    }
-    .article {
-        padding: 20px;
-    }
-}
 
-/* 모바일 미디어 쿼리 */
-@media (max-width: 480px) {
-    .wrap {
-        width: 100%;
-    }
-    #circle {
-        width: 100%;
-        height: auto;
-        transform: scale(1); /* 스케일을 기본값으로 설정 */
-        margin-top: 20px; /* 상단 여백 추가 */
-    }
-    .article {
-        padding: 10px;
-    }
-    h1 {
-        font-size: 18px; /* 모바일에 적합한 글꼴 크기 */
-    }
-    nav div h2 {
-        font-size: 16px; /* 더 작은 글꼴 크기로 조정 */
-    }
-
-}
 @keyframes panorama-spin {
     /* 변형 효과를 통해 스핀 (rotate) 을 적용 */
     0% { transform : rotateY(0deg); }
@@ -95,7 +58,7 @@ body {
 .wrap #circle {
     width:600px;
     height: 800px;
-    position : absolute;
+    position : relative;
     top : 50%;
     left : 50%;
     margin-left: -300px;
@@ -343,3 +306,40 @@ body {
 #circle .face8 .inner>div:nth-of-type(3) h3 {}
 #circle .face8 .inner>div:nth-of-type(3) p {}
 #circle .face8 .inner>div:nth-of-type(3) i {}
+
+
+/* 태블릿 미디어 쿼리 */
+/*@media (max-width: 1024px) {*/
+/*    .wrap {*/
+/*        width: 100%;*/
+/*    }*/
+/*    !* 태블릿에 최적화된 레이아웃 *!*/
+/*    #circle {*/
+/*        width: 50%;*/
+/*        height: auto;*/
+/*        transform: scale(0.8);*/
+/*    }*/
+/*    .article {*/
+/*        padding: 20px;*/
+/*    }*/
+/*}*/
+
+/* 모바일 미디어 쿼리 */
+@media (max-width: 800px) {
+    .wrap #circle {
+        transform: scale(1.2); /* 화면을 200%로 확대 */
+        transform-origin: center center; /* 확대 기준점을 중앙으로 설정 */
+        overflow: auto; /* 필요한 경우 스크롤바 표시 */
+    }
+    .wrap #circle article {
+        padding: 10px; /* article 내부 패딩 */
+    }
+
+    .wrap #circle article h1 {
+        font-size: 18px; /* h1 태그의 글꼴 크기 조정 */
+    }
+
+    .wrap #circle article nav div h2 {
+        font-size: 16px; /* h2 태그의 글꼴 크기 조정 */
+    }
+}
