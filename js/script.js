@@ -57,3 +57,26 @@ toggleButton.addEventListener('click', function() {
         $circle.style.animation = 'none';
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 모바일 크기를 정의합니다.
+    const mobileSize = window.matchMedia("(max-width: 800px)");
+
+    // 특정 요소의 텍스트를 변경하는 함수를 정의합니다.
+    function changeTextForMobile(mq) {
+        var textElement = document.querySelector('.wrap #circle article nav div .hobby');
+        if (textElement) {
+            if (mq.matches) {
+                // 화면 크기가 480px 이하이면 텍스트를 변경합니다.
+                textElement.textContent = 'HOBBY'; // 또는 'LOVE'로 변경
+            } else {
+                // 화면 크기가 480px 초과이면 원래 텍스트로 되돌립니다.
+                textElement.textContent = 'What I Love';
+            }
+        }
+    }
+
+    // 미디어 쿼리에 이벤트 리스너를 추가하여 화면 크기에 따라 함수를 실행합니다.
+    mobileSize.addListener(changeTextForMobile);
+    changeTextForMobile(mobileSize); // 초기 로드 시 함수를 실행합니다.
+});
