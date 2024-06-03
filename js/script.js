@@ -46,6 +46,7 @@ document.addEventListener('mouseup', function(e) {
 
 // 토글 스위치를 추가하여 자동 회전과 수동 드래그를 전환
 const toggleButton = document.getElementById('toggleButton');
+toggleButton.textContent = '자동 회전으로 전환'; // 초기 텍스트 설정
 
 toggleButton.addEventListener('click', function() {
     autoRotate = !autoRotate;
@@ -79,4 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // 미디어 쿼리에 이벤트 리스너를 추가하여 화면 크기에 따라 함수를 실행합니다.
     mobileSize.addListener(changeTextForMobile);
     changeTextForMobile(mobileSize); // 초기 로드 시 함수를 실행합니다.
+});
+
+// face2 기술 스택 JS
+document.addEventListener('DOMContentLoaded', function() {
+    let flipButtons = document.querySelectorAll('.flip-button');
+    flipButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            let container = this.closest('.flip-container');
+            container.classList.toggle('flip');
+        });
+    });
 });
